@@ -1,0 +1,119 @@
+$screen: 720px;
+$font: 16px;
+$inputlen: 26vw;
+$color: #f8f8f8;
+$color1: #3f51b5;
+$color2: #bbbbbb;
+$color3: #e7e9ff;
+$color4: #7e8aff;
+$color5: #f5f7f9;
+body{
+  font-size: $font!important;
+  font-family: PingFang-SC-Medium;
+}
+.bgstyle{
+  background-color: $color5;
+  height: 100%;
+  padding: 0.5px;
+}
+.ivu-menu-item{
+  font-size: $font !important;
+}
+.comboitem{
+  width: 47%;
+  height: 14vw;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px transparent solid;
+  background: white;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  border-radius: 1rem;
+}
+.comboitem1{
+  width: 22vw;
+  height: 8vw;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px transparent solid;
+  background: white;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+}
+.combolayout{
+  background: rgb(245,247,249);
+  // height: 100%
+}
+.headerbutton{
+  position: absolute;
+  left: 320px;
+  top: 2rem;
+  z-index: 100;
+  color: $color1;
+}
+.headerbutton1{
+  position: absolute;
+  right:3rem;
+  top: 3rem;
+  text-align: right;
+  z-index: 200;
+}
+.searchinput>.ivu-input{
+  border-radius: 2vw !important;
+  width: 100%;
+}
+.rowstyle{
+  margin-top: 3vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+//修改iview样式
+.tablestyle thead{
+  color: $color1 !important;
+}
+table{
+  height: 400px;
+}
+.tablestyle th{
+  background-color: $color3!important;
+}
+.tablestyle td{
+  width: 20%;
+}
+.ivu-layout-content{
+  flex: 0 auto !important;
+}
+.buttonstyle{
+  background-color:$color4;
+  color: #ffffff;
+}
+table{
+  height: auto !important;
+}
+.ivu-checkbox-wrapper{
+  font-size: 14px !important;
+}
+thead .ivu-checkbox-wrapper{
+  display: none;
+}
+input{
+  touch-action: manipulation !important;
+}
+
+.ivu-checkbox-inner{
+  width:16px !important;
+  height: 16px !important;
+}
+// .ivu-table-row{
+//   overflow: scroll;
+//   position: absolute;
+//   /* left: -10px; */
+//   width: 100%;
+//   /* top: 50px; */
+//   z-index: 1;
+//   height: 55px;
+// }
+
