@@ -13,9 +13,10 @@
             </div>
         </header>
         <section>
-          <div class="promptinfo">*提示：必选项目不可删除，实际金额请以提交后金额为准。</div>
+          <div class="promptinfo" style="color:red;margin-bottom:1rem;">*提示：必选项目不可删除，实际金额请以提交后金额为准。</div>
             <Table :columns="columns1" :data="data1" class="tablestyle clearstyle" border="true" height="450">
             </Table>
+            <div style="color: red;padding:0.5rem">预估金额：￥{{allprice}}</div>
         </section>
         <footer style="margin-top: 5rem;text-align: center">
             <Button type="primary" size="large" @click.native="confirmorder" v-if="chargeflag === false">提交订单</Button>
@@ -56,6 +57,15 @@ export default {
   },
   computed: {
     ...mapState(['yourcombo', 'personinfo']),
+    allprice: {
+      get() {
+        let tempprice = 0;
+        for (let i = 0; i < this.data1.length; i++) {
+          tempprice += this.data1[i].DJ0000;
+        }
+        return tempprice;
+      },
+    },
   },
   mounted() {
     if (this.$route.query.tjh000 !== undefined) {
@@ -93,7 +103,11 @@ export default {
       this.$Modal.confirm({
         title: '确认订单',
         onOk() {
-          getUpdateBylist(`ids=${that.ids}&zjbh00=${that.personinfo.zjbh00}&xm0000=${encodeURI(encodeURI(that.personinfo.xm0000))}&yyid00=222667&xb0000=${that.personinfo.xb0000}&tjh000=${that.tjh000}`).then(response => response.json()).then((res) => {
+          let choose = '';
+          if (that.tjh000 !== '') {
+            choose = '6';
+          }
+          getUpdateBylist(`ids=${that.ids}&zjbh00=${that.personinfo.zjbh00}&xm0000=${encodeURI(encodeURI(that.personinfo.xm0000))}&yyid00=222667&xb0000=${that.personinfo.xb0000}&tjh000=${that.tjh000}&choose=${choose}`).then(response => response.json()).then((res) => {
             if (res.responseEntity.errorcode === '00') {
               setTimeout(() => {
                 that.$Modal.success({
@@ -117,7 +131,7 @@ export default {
       this.newprj = res;
     },
     addtodata1() {
-      for (let i = 0; i < this.newprj.length; i++) {
+      for (let i = 0; i < this.newprj.length; i += 1) {
         this.data1.push(this.newprj[i]);
       }
       this.newprj = [];

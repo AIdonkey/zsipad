@@ -8,7 +8,7 @@ export const mixin = { // 订单项目
         },
         {
           title: '参考价格',
-          key: 'DJ0000' || 'YSJE00',
+          key: 'DJ0000',
         },
         {
           title: '所属科室',

@@ -18,7 +18,8 @@
                     <Page :total="yourdep.length*8" :current="1" @on-change="changePage"></Page>
                 </div>
             </div>
-            <div></div>
+            <div>
+            </div>
         </section>
         </div>
         <footer>
@@ -83,7 +84,6 @@ export default {
       this.searchprj = [];
       this.yourdep = [];
       this.pagesnum = 1;
-      console.log(this.searchwords);
       for (let i = 0; i < this.yourdep1.length; i++) {
         for (let j = 0; j < this.yourdep1[i].length; j++) {
           if (this.yourdep1[i][j].SFXMMC.indexOf(this.searchwords) !== -1) {
@@ -142,7 +142,7 @@ export default {
     },
     selectoption(selection, row) {
       // 所选项目
-      const temdate = new Date();
+      // const temdate = new Date();
       const yourdeppage = this.pagesnum - 1;
       this.recentoption = selection;
       if (selection.length === 0) {

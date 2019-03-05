@@ -16,4 +16,4 @@ export const getyhxx1 = params => fetch(`/api/yjzzjManager/service/wjjm/yhxx1.ht
 export const getxzfl = params => fetch(`/api/yjzzjManager/service/wjjm/getxzfl.htm?${params}`, { method: 'POST' });
 export const gettjzxx = params => fetch(`/api/yjzzjManager/service/wjjm/tjzxx.htm?${params}`, { method: 'POST' });
 export const yyTj = params => fetch(`/api/yjzzjManager/service/wjjm/yyTj.htm?${params}`, { method: 'POST' });
-export const login = params => fetch(`/api/yjzzjManager/service/wjjm/yysj.htm?${params}`); 
+export const login = params => fetch(`/api/yjzzjManager/service/wjjm/yysj.htm?${params}`);
