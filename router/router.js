@@ -22,34 +22,47 @@ export default new Router({
       children: [
         {
           path: 'personinfo',
+          name: 'personinfo',
           component: () => import('../src/views/personinfo/personinfo.vue'),
         },
         {
           path: 'questionnaire',
+          name: 'questionnaire',
           component: () => import('../src/views/questionnaire/questionnaire.vue'),
         },
         {
           path: 'combo',
+          name: 'combo',
           component: () => import('../src/views/combo/combo.vue'),
         },
         {
           path: 'reservation',
+          name: 'reservation',
           component: () => import('../src/views/reservation/reservation.vue'),
         },
         {
+          path: 'reservationchart',
+          name: 'reservationchart',
+          component: () => import('../src/views/reservation/reservationchart.vue'),
+        },
+        {
           path: 'combodetail',
+          name: 'combodetail',
           component: () => import('../src/views/combo/combodetail/combodetail.vue'),
         },
         {
           path: 'combodetail1',
+          name: 'combodetail1',
           component: () => import('../src/views/combo/combodetail/combodetail1.vue'),
         },
         {
           path: 'pay',
+          name: 'pay',
           component: () => import('../src/views/pay/pay.vue'),
         },
         {
           path: 'pay1',
+          name: 'pay1',
           component: () => import('../src/views/pay/pay1.vue'),
         },
       ],
@@ -57,10 +70,12 @@ export default new Router({
     },
     {
       path: '/orderdetail',
+      name: 'orderdetail',
       component: () => import('../src/views/order/orderdetail/orderdetail.vue'),
     },
     {
       path: '/test',
+      name: 'test',
       component: () => import('../src/views/zxtc/test.vue'),
     },
   ],

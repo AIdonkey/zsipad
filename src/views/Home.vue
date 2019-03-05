@@ -3,16 +3,16 @@
     <Layout>
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}" width="272">
-          <Menu active-name="1-1" theme="light" width="auto">
+          <Menu :active-name="activename" theme="light" width="auto">
               <div class="hosicon">
               </div>
-            <MenuItem name="1-1" @click.native="$router.push('/home/personinfo')">
+            <MenuItem name="personinfo" @click.native="$router.push('/home/personinfo')">
               <Icon type="logo-android" />基本信息完善
             </MenuItem>
-            <MenuItem name="1-2" @click.native="$router.push('/home/combo')" >
+            <MenuItem name="combo" @click.native="$router.push('/home/combo')" >
               <Icon type="logo-angular" />体检套餐选择
             </MenuItem>
-            <MenuItem name="1-3" @click.native="$router.push('/home/questionnaire')" >
+            <MenuItem name="questionnaire" @click.native="$router.push('/home/questionnaire')" >
               <Icon type="ios-body" />问卷调查
             </MenuItem>
             <!--<MenuItem name="1-4" @click.native="$router.push('/home/home1')">-->
@@ -24,10 +24,10 @@
             <!-- <MenuItem name="1-6" @click.native="$router.push('/home/reservation')">
               <Icon type="ios-navigate" />体检日期预约
             </MenuItem> -->
-            <MenuItem name="1-7" @click.native="$router.push('/orderdetail')">
+            <MenuItem name="orderdetail" @click.native="$router.push('/orderdetail')">
               <Icon type="md-ionitron" />个人订单
             </MenuItem>
-            <MenuItem name="1-8" @click.native="$router.push('/orderdetail')">
+            <MenuItem name="reservationchart" @click.native="$router.push('/reservationchart')">
               <Icon type="ios-navigate" />预约信息汇总
             </MenuItem>
             <!--<Submenu name="2">-->
@@ -76,6 +76,7 @@ export default {
   data() {
     return {
       headertitle: [{ chinese: '', english: '' }],
+      activename: this.$route.name,
     };
   },
   components: {

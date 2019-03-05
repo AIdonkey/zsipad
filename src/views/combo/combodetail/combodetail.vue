@@ -14,11 +14,11 @@
         </header>
         <section>
           <div class="promptinfo" style="color:red;margin-bottom:1rem;">*提示：必选项目不可删除，实际金额请以提交后金额为准。</div>
-            <Table :columns="columns1" :data="data1" class="tablestyle clearstyle" border="true" height="450">
+            <Table :columns="columns1" :data="data1" class="tablestyle clearstyle" border="true" height="450" align="center">
             </Table>
             <div style="color: red;padding:0.5rem">预估金额：￥{{allprice}}</div>
         </section>
-        <footer style="margin-top: 5rem;text-align: center">
+        <footer style="margin-top: 1rem;text-align: center">
             <Button type="primary" size="large" @click.native="confirmorder" v-if="chargeflag === false">提交订单</Button>
             <Button type="primary" size="large" @click.native="reserveorder" v-if="chargeflag === true">预约体检</Button>
         </footer>
@@ -26,8 +26,8 @@
                 v-model="modal6"
                 :closable="false"
                 @on-ok="addtodata1"
-                @on-cancel=""
                 :mask-closable="false"
+                class="addmodal"
                 >
             <addproject class="addstyle" :ids='ids' :modal6= 'modal6' @toaddprj="addnewprj"></addproject>
         </Modal>
@@ -61,7 +61,7 @@ export default {
       get() {
         let tempprice = 0;
         for (let i = 0; i < this.data1.length; i++) {
-          tempprice += this.data1[i].DJ0000;
+          tempprice += parseInt(this.data1[i].DJ0000);
         }
         return tempprice;
       },

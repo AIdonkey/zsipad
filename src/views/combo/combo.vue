@@ -38,7 +38,7 @@
                     </Select>
                 </div>
             </div>
-            <div class="comboitem" v-for="item in comboList" @click="combodetails(item.TCID00)" :key="item">
+            <div class="comboitem" v-for="item in comboList" @click="combodetails(item.TCID00)" :key="item" v-show="item.SYNV00 === '0' && model2 === '男' || item.SYNV00 === '1' && model2 === '女'">
                 <img src="../../assets/logo.png" alt="" class="itemicon">
                 <div class="itemcontent">
                     <p style="font-weight: bold;">{{item.TCMC00}}</p>
@@ -111,6 +111,7 @@ export default {
       comboList: [],
       showtype: true,
       sex: ['男', '女'],
+      model2: '',
     };
   },
   mounted() {
