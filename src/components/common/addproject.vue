@@ -33,7 +33,7 @@ import { getAddItemList, getPEItemConflict } from '../../service/service';
 export default {
   name: 'addproject',
   mixins: [mixin1],
-  props: ['ids'],
+  props: ['ids', 'modal6'],
   data() {
     return {
       conflictproject: [],
@@ -52,8 +52,12 @@ export default {
   created() {
   },
   watch: {
-    ids() {
-      this.depshow = true;
+    modal6() {
+      if (this.modal6 === false) {
+        this.depshow = false;
+      } else {
+        this.depshow = true;
+      }
       getAddItemList(`yyid00=222667&xzfl00=1&xb0000=0&pageSize=800&pageNumber=1&sqxmid=${this.$props.ids}&search=`).then(response => response.json()).then((res) => {
         this.addproject = [];
         this.addproject = res.responseEntity.entity;
@@ -80,6 +84,9 @@ export default {
         this.conflictproject = res.responseEntity.entity;
       });
     },
+    // modal6() {
+    //   this.depshow = true;
+    // },
     searchwords() {
       this.searchprj = [];
       this.yourdep = [];
