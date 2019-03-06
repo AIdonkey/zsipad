@@ -1,5 +1,9 @@
 <template>
-    <div style="height: 100vh;width: 100vw;background-color: rgb(126,138,255)" >
+    <div style="height: 100vh;width: 100vw;background-color: rgb(126,138,255)">
+            <Spin fix v-show="!showflag">
+                <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
+                <div>自动登录中...</div>
+            </Spin>
         <div class="logincontainer">
             <div class="logincell">
                 <Input prefix="ios-contact" size="large" class="inputcell" v-model="username"/>
@@ -33,7 +37,7 @@
 </template>
 
 <script>
-import { login } from '../../service/service';
+import { login, checkLogin } from '../../service/service';
 
 export default {
   name: 'login',
@@ -41,31 +45,47 @@ export default {
     return {
       username: '',
       password: '',
+      showflag: false,
     };
   },
-  mounted() {
-    const imgdown = document.getElementsByClassName('ivu-icon-logo-chrome')[0];
-    const logincontainter = document.getElementsByClassName('imghandle')[0];
-    console.log(imgdown.style);
-    imgdown.addEventListener('mousedown', () => {
-      logincontainter.addEventListener('mousemove', (event) => {
-        imgdown.style.marginLeft = `${event.offsetX + 5}px`;
+  beforeCreate() {
+    const loginindex = document.cookie.indexOf('dlyzxx=');
+    console.log(loginindex);
+    if (loginindex !== -1) {
+      const loginflag = document.cookie.slice(loginindex + 7, loginindex + 37);
+      checkLogin(JSON.stringify({ dlyzxx: loginflag })).then(data => data.json()).then((res) => {
+        this.$router.push('/home/personinfo');
       });
-    });
-    logincontainter.addEventListener('mouseup', (event) => {
-      logincontainter.removeEventListener('mousemove', () => {
-        console.log('success');
-      }, false);
-    });
-    // imgdown.addEventListener('mouseup', function () {
-    //   imgdown.removeEventListener('mousemove')
-    // })
+    } else {
+      this.showflag = true;
+    }
+  },
+  mounted() {
+    // const imgdown = document.getElementsByClassName('ivu-icon-logo-chrome')[0];
+    // const logincontainter = document.getElementsByClassName('imghandle')[0];
+    // console.log(imgdown.style);
+    // imgdown.addEventListener('mousedown', () => {
+    //   logincontainter.addEventListener('mousemove', (event) => {
+    //     imgdown.style.marginLeft = `${event.offsetX + 5}px`;
+    //   });
+    // });
+    // logincontainter.addEventListener('mouseup', (event) => {
+    //   logincontainter.removeEventListener('mousemove', () => {
+    //     console.log('success');
+    //   }, false);
+    // });
+    // // imgdown.addEventListener('mouseup', function () {
+    // //   imgdown.removeEventListener('mousemove')
+    // // })
   },
   methods: {
     submit() {
-      fetch('/apx/login', { method: 'POST' }, { loginname: 'hjj', pass: 'hjj6201341' }).then(data => data.json()).then((res) => { console.log(res); });
-      this.$router.push('/home/personinfo');
-      this.start();
+      login(JSON.stringify({ userName: 'admin', passWord: 'admin' })).then(data => data.json()).then((res) => {
+        this.$router.push('/home/personinfo');
+        const expiretime = new Date();
+        expiretime.setDate(expiretime.getDate() + 7);
+        document.cookie = `dlyzxx=${res.responseEntity.entity.dlyzxx};expires=${expiretime}`;
+      });
     },
     start() {
       // if (imgdown) {
@@ -99,6 +119,14 @@ export default {
     flex-direction: column;
     align-items: center;
 }
+.demo-spin-icon-load{
+        animation: ani-demo-spin 1s linear infinite;
+    }
+    @keyframes ani-demo-spin {
+        from { transform: rotate(0deg);}
+        50%  { transform: rotate(180deg);}
+        to   { transform: rotate(360deg);}
+    }
 Input{
     line-height: 1.5;
 }

@@ -13,17 +13,17 @@
             </div>
         </header>
         <section>
-            <div>
+            <div style="text-align:center;">
                 <img src="../../assets/weixinzhifubao.svg" style="width:45%;" alt="" @click="$router.push('/home/pay1')">
-                <img src="../../assets/医保卡.svg" style="width:45%;margin-left:10%;" alt="">
+                <!-- <img src="../../assets/医保卡.svg" style="width:45%;margin-left:10%;" alt=""> -->
             </div>
-            <div>
+            <div style="text-align:center;">
                 <div style="display:inline-block;width:50%;text-align:center;">
                     线上支付
                 </div>
-                <div style="display:inline-block;width:50%;text-align:center;">
+                <!-- <div style="display:inline-block;width:50%;text-align:center;">
                     医保支付
-                </div>
+                </div> -->
             </div>
         </section>
         <footer class="recommand">

@@ -31,6 +31,8 @@
                 </div> -->
                 <div style="display:inline-block;width: 23%">
                     <span class="fontstyle1">性 别</span>
+                    <!-- <Icon type="ios-man" size="20"/>
+                    <Icon type="ios-woman" /> -->
                     <Select v-model="model2" style="width: 100px;" size="large">
                         <Option v-for="item in sex" :value="item" :key="item">
                             {{ item }}
@@ -38,7 +40,7 @@
                     </Select>
                 </div>
             </div>
-            <div class="comboitem" v-for="item in comboList" @click="combodetails(item.TCID00)" :key="item" v-show="item.SYNV00 === '0' && model2 === '男' || item.SYNV00 === '1' && model2 === '女'">
+            <div class="comboitem" v-for="item in comboList" @click="combodetails(item.TCID00)" :key="item" v-show="item.SYNA00 === '1' && model2 === '男' || item.SYNV00 === '1' && model2 === '女' || model2 === ''">
                 <img src="../../assets/logo.png" alt="" class="itemicon">
                 <div class="itemcontent">
                     <p style="font-weight: bold;">{{item.TCMC00}}</p>

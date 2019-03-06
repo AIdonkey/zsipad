@@ -19,7 +19,7 @@ export default {
   computed: {},
 
   mounted() {
-    getYysj(`tjh000=${0}&yyid00=${this.hospital}`).then(response => response.json()).then((resp) => { this.reserdate = resp.responseEntity.entity; });
+    getYysj(`tjh000=${2011577}&yyid00=${this.hospital}`).then(response => response.json()).then((resp) => { this.reserdate = resp.responseEntity.entity; });
   },
 
   methods: {

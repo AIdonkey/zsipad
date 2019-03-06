@@ -18,6 +18,7 @@ export const mixin = { // 订单项目
         {
           title: '类型',
           key: 'XMLB00',
+          width: 100,
           render: (h, params) => {
             if (params.row.XMLB00 === '1') {
               return h('span', {
@@ -33,7 +34,7 @@ export const mixin = { // 订单项目
                 props: {
                   type: 'md-trash',
                   size: 30,
-                  color: 'red',
+                  color: '#7e8aff',
                 },
                 on: {
                   click: () => {

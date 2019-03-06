@@ -47,7 +47,7 @@
               <!--<MenuItem name="3-2">Option 2</MenuItem>-->
             <!--</Submenu>-->
           </Menu>
-          <div style="text-align: left;padding: 24px;position:absolute;bottom:0;" @click="backhome()">
+          <div class="backhome" @click="backhome()">
               <Icon type="md-return-left" /> <span style="padding-left:12px;">返回 首页</span>
             </div>
         </Sider>
@@ -76,7 +76,6 @@ export default {
   data() {
     return {
       headertitle: [{ chinese: '', english: '' }],
-      activename: this.$route.name,
     };
   },
   components: {
@@ -96,6 +95,9 @@ export default {
   },
   computed: {
     ...mapState(['hospital']),
+    activename() {
+      return this.$route.name;
+    },
   },
 
 };
@@ -127,5 +129,10 @@ export default {
   MenuItem{
     color: $color1;
   }
-
+  .backhome{
+    text-align: left;
+    padding: 24px;
+    position:absolute;
+    bottom:0;
+  }
 </style>

@@ -9,7 +9,7 @@
         </header>
         <div>
             <div class="breadcumb0">
-                <div class="breadcontain">健康史</div>
+                <div class="breadcontain"><Icon type="ios-contacts" />&nbsp;&nbsp;健康史</div>
             </div>
             <div class="breadcumb1">
                 <!--<span class="breadcumb1"></span>-->
@@ -18,7 +18,7 @@
 
             </div>
             <div class="breadcumb" :style="[medicalway >= 7? activestyle: inactivestyle]">
-                <div class="breadcontain" >生活习惯</div>
+                <div class="breadcontain" ><Icon type="ios-contacts" />&nbsp;&nbsp;生活习惯</div>
             </div>
 
             <div class="breadcumb1" :style="[medicalway >= 7? acitvestyle2: inactivestyle2]">
@@ -27,7 +27,7 @@
 
             </div>
             <div class="breadcumb" :style="[medicalway >= 8? activestyle: inactivestyle]">
-                <div class="breadcontain">躯体症状</div>
+                <div class="breadcontain"><Icon type="ios-contacts" />&nbsp;&nbsp;躯体症状</div>
             </div>
 
             <div class="breadcumb1" :style="[medicalway >= 8? activestyle2: inactivestyle2]">
@@ -44,10 +44,10 @@
         <div class="questioncontent">
           <div>
             <div v-for="item in question" :key="item.id" class="questionline" v-show="(item.flag === undefined || item.flag === 0) && (item.idgf === undefined || item.idgf === medicalhistory[medicalway])">
-                {{item.name}}
+                <div style="padding-bottom:7px;">{{item.name}}</div>
                 <div class="questioncheck">
                     <Checkbox v-model="item1.check" v-for="item1 in item.answer" :key="item1.value" @change.native="changeanswer(item, $event, item1)">
-                        {{item1.label}}
+                        &nbsp;{{item1.label}}
                     </Checkbox>
                 </div>
             </div>
@@ -62,16 +62,16 @@
     right: 5rem;" size="30"/> -->
                 <Button @click="medicalway--" v-show="medicalway > 0" size="large" style="position: absolute;
     bottom: 5rem;
-    right: 4rem;width:6rem" type="primary">上一题</Button>
+    right: 3rem;width:6rem" type="primary">上一题</Button>
                 <Button @click="medicalway++" v-show="medicalway < medicalhistory.length-1" size="large" style="position: absolute;
     bottom: 2rem;
-    right: 4rem;width:6rem"  type="primary">下一题</Button>
+    right: 3rem;width:6rem"  type="primary">下一题</Button>
                 <Button  v-show="medicalway === medicalhistory.length-1" size="large"  style="position: absolute;
     bottom: 2rem;
-    right: 4rem;
-    width:6rem" type="primary" @click.native="submitquestionnaire">提交问卷</Button>
+    right: 3rem;
+    width:6rem" type="success" @click.native="submitquestionnaire">提交问卷</Button>
               </div>
-              
+
             </div>
         </div>
         </div>
@@ -79,6 +79,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { generatePeItem, getPeItemDasStrDetail } from '../../service/service';
+
 export default {
   name: 'questionnaire',
   data() {
@@ -302,7 +305,7 @@ export default {
           name: '36.您的工作/生活场所经常会接触到哪些有害物质？', id: 25, answer: [{ label: '无或很少', value: '25:21:QA021:1', check: false }, { label: '噪音、震动', value: '25:22:QA022:1', check: false }, { label: '粉尘', value: '25:24:QA024:1', check: false }, { label: '化学污染', value: '25:25:QA025:1', check: false }, { label: '空气污染', value: '25:26:QA026:1', check: false }, { label: '烹饪油烟', value: '25:28:QA028:1', check: false }, { label: '其他', value: '25:29:QA029:1', check: false }, { label: '电磁辐射', value: '25:23:QA023:1', check: false }, { label: '建筑装修污染', value: '25:27:QA027:1', check: false }], multiple: 1, idgf: '躯体症状',
         },
       ],
-      medicalway: 0,
+      medicalway: 0, // 第几题
       inactivestyle: { background: '#bfc5ff' },
       activestyle: { background: '#7e8aff' },
       activestyle1: {
@@ -334,38 +337,53 @@ export default {
   mounted() {
     this.initanswer();
   },
-  beforeCreate() {
-
+  computed: {
+    ...mapState(['personinfo']),
   },
   methods: {
     initanswer() { // 初始化答案
-      const initan = ['51:102:QA102:1', '49:96:QA096:1', '38:67:QA067:1', '58:158:QA158:1', '15:1:QA001:0', '52:116:QA116:0'];
-      if (initan) {
-        for (let i = 0; i < this.question.length; i++) {
-          for (let j = 0; j < this.question[i].answer.length; j++) {
-            if (initan.indexOf(this.question[i].answer[j].value) !== -1) {
-              this.question[i].answer[j].check = true;
+      getPeItemDasStrDetail(JSON.stringify({ yyid00: '222667', zjbh00: this.personinfo.zjbh00 }))
+        .then(response => response.json())
+        .then((data) => {
+          console.log(data.responseEntity.entity.list);
+          const initialquestion = data.responseEntity.entity.list;
+          const initan = [];
+          for (let i = 0; i < initialquestion.length; i++) {
+            if (initialquestion[i].DAID00 < 10) {
+              initan.push(`${initialquestion[i].TMID00}:${initialquestion[i].DAID00}:QA00${initialquestion[i].DAID00}:${initialquestion[i].DANR00}`);
+            } else if (initialquestion[i].DAID00 < 100) {
+              initan.push(`${initialquestion[i].TMID00}:${initialquestion[i].DAID00}:QA0${initialquestion[i].DAID00}:${initialquestion[i].DANR00}`);
+            } else {
+              initan.push(`${initialquestion[i].TMID00}:${initialquestion[i].DAID00}:QA${initialquestion[i].DAID00}:${initialquestion[i].DANR00}`);
             }
           }
-        }
-        for (let i = 0; i < this.question.length; i++) {
-          if (this.question[i].idf !== undefined) {
-            for (let j = 0; j < this.question.length; j++) {
-              for (let k = 0; k < this.question[j].answer.length; k++) {
-                if (this.question[i].idf === this.question[j].answer[k].value && this.question[j].answer[k].check === true) {
-                  this.question[i].flag = 0;
-                } else if (this.question[i].idf === this.question[j].answer[k].value) {
-                  this.question[i].flag = 1;
-                  for (let g = 0; g < this.question[i].answer.length; g++) {
-                    this.question[i].answer[g].check = false;
+          if (initan) {
+            for (let i = 0; i < this.question.length; i++) {
+              for (let j = 0; j < this.question[i].answer.length; j++) {
+                if (initan.indexOf(this.question[i].answer[j].value) !== -1) {
+                  this.question[i].answer[j].check = true;
+                }
+              }
+            }
+            for (let i = 0; i < this.question.length; i++) {
+              if (this.question[i].idf !== undefined) {
+                for (let j = 0; j < this.question.length; j++) {
+                  for (let k = 0; k < this.question[j].answer.length; k++) {
+                    if (this.question[i].idf === this.question[j].answer[k].value && this.question[j].answer[k].check === true) {
+                      this.question[i].flag = 0;
+                    } else if (this.question[i].idf === this.question[j].answer[k].value) {
+                      this.question[i].flag = 1;
+                      for (let g = 0; g < this.question[i].answer.length; g++) {
+                        this.question[i].answer[g].check = false;
+                      }
+                    }
                   }
                 }
               }
             }
           }
-        }
-      }
-      this.$Spin.hide();
+          this.$Spin.hide();
+        });
     },
     changeanswer(data, event, data1) { // 修改选项
       if (data.multiple !== 1) {
@@ -394,14 +412,42 @@ export default {
       }
     },
     submitquestionnaire() {
-      let questionstr = '';
-      for (let i = 0; i < this.question.length; i++) {
-        for (let j = 0; j < this.question[i].answer.length; j++) {
-          if (this.question[i].answer[j].check === true) {
-            questionstr += `${this.question[i].answer[j].value},`;
+      const that = this;
+      this.$Modal.confirm({
+        title: '提交问卷',
+        onOk() {
+          let questionstr = '';
+          for (let i = 0; i < that.question.length; i++) {
+            for (let j = 0; j < that.question[i].answer.length; j++) {
+              if (that.question[i].answer[j].check === true) {
+                questionstr += `${that.question[i].answer[j].value},`;
+              }
+            }
           }
-        }
-      }
+          generatePeItem(JSON.stringify({
+            dasStr: questionstr,
+            dhhm00: that.personinfo.dhhm00,
+            nl0000: that.personinfo.nl0000,
+            qCode: 'QC001',
+            remark: '个性化问卷111',
+            sfbr00: '0',
+            sfby00: '0',
+            sfwh00: '0',
+            sfyj00: '1',
+            sfyy00: '1',
+            wjdf00: 12,
+            wjid00: '1',
+            wjzjpg: '不错哦',
+            xb0000: that.personinfo.xb0000,
+            xm0000: that.personinfo.xm0000,
+            yyid00: '222667',
+            zjbh00: that.personinfo.zjbh00,
+          })).then(response => response.json()).then((data) => {
+            that.$store.state.yourcombo = data.responseEntity.entity.rows;
+            that.$router.push('/home/combodetail');
+          });
+        },
+      });
     },
   },
 };
@@ -479,6 +525,10 @@ export default {
     }
     .questioncheck{
         display: grid;
+        grid-gap: 10px;
         grid: auto-flow/1fr 1fr 1fr;
+    }
+    .questioncontent{
+      min-height: 450px;
     }
 </style>

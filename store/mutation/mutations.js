@@ -11,7 +11,7 @@ export default {
   },
   [PERSONINFO](state, variable) {
     state.personinfo = variable;
-  },
+  },  
   [COMBO](state, variable) {
     state.combo = variable;
   },

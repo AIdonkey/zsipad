@@ -97,6 +97,7 @@ export default {
       modal4: 0,
       modal5: '',
       Height: 0,
+      age: '',
       mobilephone: '',
       camerastring: '',
       Weight: 0,
@@ -257,6 +258,12 @@ export default {
     width: 5rem;
     text-align: justify;
     margin-right: 0.5rem;
+    height: 24px;
 }
-
+.fontstyle::after{
+    content: '';
+    width: 100%;
+    height: 0.1px;
+    display: inline-block;
+}
 </style>

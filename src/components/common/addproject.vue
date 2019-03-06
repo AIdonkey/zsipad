@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Button v-for="(item,key) in deparr" :key="key" style="margin: 1rem 0 0 1rem;width: 14vw"
+        <Button v-for="(item,key) in deparr" :key="key" style="margin: 1rem 0 0 1rem;width: 14vw" class="depstyle"
         @click.native="changedep(item)" v-show="depshow"
         >
                     {{item}}
@@ -220,5 +220,9 @@ export default {
     display: inline-block;
     font-size: 1rem;
     color: $color1;
+}
+.depstyle{
+  background-color: #afbcff;
+  color:white;
 }
 </style>

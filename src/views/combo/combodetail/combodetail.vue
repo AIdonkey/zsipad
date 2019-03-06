@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="headerbutton1">
-                <Button @click="modal6 = true" style="border-radius: 3rem" size="large" v-if="chargeflag === false">
+                <Button @click="modal6 = true" style="border-radius: 3rem" size="large" v-if="chargeflag === false" class="buttonstyle">
                     新增检查项目
                 </Button>
             </div>
