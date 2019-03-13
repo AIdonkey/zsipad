@@ -76,7 +76,6 @@ export default {
   data() {
     return {
       headertitle: [{ chinese: '', english: '' }],
-      activename: this.$route.name,
     };
   },
   components: {
