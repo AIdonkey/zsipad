@@ -18,7 +18,7 @@
             </Table>
             <div style="color: red;padding:0.5rem">预估金额：￥{{allprice}}</div>
         </section>
-        <footer style="margin-top: 2rem;text-align: center">
+        <footer style="margin-top: 1rem;text-align: center">
             <Button type="primary" size="large" @click.native="confirmorder" v-if="chargeflag === false">提交订单</Button>
             <Button type="primary" size="large" @click.native="reserveorder" v-if="chargeflag === true">预约体检</Button>
         </footer>
