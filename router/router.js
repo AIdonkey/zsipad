@@ -74,6 +74,16 @@ export default new Router({
       component: () => import('../src/views/order/orderdetail/orderdetail.vue'),
     },
     {
+      path: '/report',
+      name: 'report',
+      component: () => import('../src/views/report/report.vue'),
+    },
+    {
+      path: '/reportdetail',
+      name: 'reportdetail',
+      component: () => import('../src/views/report/reportdetail.vue'),
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('../src/views/zxtc/test.vue'),

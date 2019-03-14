@@ -18,6 +18,7 @@
     "iview": "^3.0.1",
     "moment": "^2.24.0",
     "open-in-editor": "^2.2.0",
+    "randomcolor": "^0.5.4",
     "register-service-worker": "^1.5.2",
     "tesseract.js": "^1.0.14",
     "three": "^0.100.0",

@@ -3,10 +3,10 @@ export const getGdtcList = params => fetch(`/api/yjzzjManager/service/wjjm/getGd
 export const getGdtcItemList = params => fetch(`/api/yjzzjManager/service/wjjm/getGdtcItemList.htm?${params}`, { method: 'POST' }); // 固定套餐项目
 export const getUpdateBylist = params => fetch(`/api/yjzzjManager/service/wjjm/getYYByUpdateList.htm?${params}`, { method: 'POST', body: params, headers: { 'Content-Type': 'application/json' } });
 export const getPEItem = params => fetch(`/api/yjzzjManager/service/wjjm/GetPEItem.htm?${params}`, { method: 'POST', headers: { 'Content-Type': 'application/json' } });
-export const getReport = params => fetch('/api/yjzzjManager/service/wjjm/getReport', { method: 'POST', body: params, headers: { 'Content-Type': 'application/json' } });
+export const getReport = params => fetch('/api/yjzzjManager/service/wjjm/getReport.htm', { method: 'POST', body: params, headers: { 'Content-Type': 'application/json' } });
 export const getAddItemList = params => fetch(`/api/yjzzjManager/service/wjjm/getAddItemList.htm?${params}`, { method: 'POST' });
 export const getPatientOrder = params => fetch('/api/yjzzjManager/service/wjjm/getPatientOrder', { method: 'POST', body: params, headers: { 'Content-Type': 'application/json' } });
-export const getBasicInfo = params => fetch('/api/yjzzjManager/service/wjjm/getBasicInfo', { method: 'POST', body: params, headers: { 'Content-Type': 'application/json' } });
+export const getBasicInfo = params => fetch('/api/yjzzjManager/service/wjjm/getBasicInfo.htm', { method: 'POST', body: params, headers: { 'Content-Type': 'application/json' } });
 export const getTcDetail = params => fetch('/api/yjzzjManager/service/wjjm/getTcDetail', { method: 'POST', body: params, headers: { 'Content-Type': 'application/json' } });
 export const getPEItemConflict = params => fetch(`/api/yjzzjManager/service/wjjm/getPEItemConflict.htm?${params}`, { method: 'POST' });
 export const getYysj = params => fetch(`/api/yjzzjManager/service/wjjm/getYysj.htm?${params}`, { method: 'POST' });

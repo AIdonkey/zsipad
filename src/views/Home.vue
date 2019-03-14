@@ -21,9 +21,9 @@
             <!-- <MenuItem name="1-5" @click.native="$router.push('/home/pay')">
               <Icon type="md-compass" />体检缴费
             </MenuItem> -->
-            <!-- <MenuItem name="1-6" @click.native="$router.push('/home/reservation')">
-              <Icon type="ios-navigate" />体检日期预约
-            </MenuItem> -->
+            <MenuItem name="1-6" @click.native="$router.push('/report')">
+              <Icon type="ios-navigate" />个人报告
+            </MenuItem>
             <MenuItem name="orderdetail" @click.native="$router.push('/orderdetail')">
               <Icon type="md-ionitron" />个人订单
             </MenuItem>

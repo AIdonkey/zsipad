@@ -112,6 +112,13 @@ input{
     width: 850px !important;
   }
 }
+.ivu-tabs.ivu-tabs-card>.ivu-tabs-bar .ivu-tabs-tab{
+  width:50% !important;
+  text-align: center !important;
+}
+.ivu-tabs-nav{
+  width: 100% !important;
+}
 // .ivu-table-row{
 //   overflow: scroll;
 //   position: absolute;
