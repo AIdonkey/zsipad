@@ -119,6 +119,20 @@ input{
 .ivu-tabs-nav{
   width: 100% !important;
 }
+.reportpane .cellstyle::after{
+  content: '';
+  width:980px;
+  height: 0px;
+  border-bottom: 1px solid rgb(235,236,238);
+  display: inline-block;
+}
+.ivu-cell-title{
+  font-size:1rem !important;
+}
+.ivu-cell{
+  padding:14px 16px !important;
+  font-size: 14px !important;
+}
 // .ivu-table-row{
 //   overflow: scroll;
 //   position: absolute;

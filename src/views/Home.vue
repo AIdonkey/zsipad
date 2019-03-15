@@ -21,7 +21,7 @@
             <!-- <MenuItem name="1-5" @click.native="$router.push('/home/pay')">
               <Icon type="md-compass" />体检缴费
             </MenuItem> -->
-            <MenuItem name="1-6" @click.native="$router.push('/report')">
+            <MenuItem name="1-6" @click.native="$router.push('/reportdetail')">
               <Icon type="ios-navigate" />个人报告
             </MenuItem>
             <MenuItem name="orderdetail" @click.native="$router.push('/orderdetail')">
