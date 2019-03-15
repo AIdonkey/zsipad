@@ -6,16 +6,22 @@
       </div>
       <div class="orderright">
         <span style="color:;">报告信息</span>
-        <div style="display: inline-block;">
-          科室分类：
+        <div style="display: inline-block;">科室分类：
           <Select v-model="model1" style="width:200px" @on-change="singleinfo">
-          <Option v-for="item0 in reportInfo" :value="item0.BMBH00" :key="item0.BMMC00">{{ item0.BMMC00 }}</Option>
-        </Select>
+            <Option
+              v-for="item0 in reportInfo"
+              :value="item0.BMBH00"
+              :key="item0.BMMC00"
+            >{{ item0.BMMC00 }}</Option>
+          </Select>
         </div>
       </div>
     </header>
     <Tabs type="card">
-      <TabPane label="体检总结" style="overflow: scroll;position:relative;height:calc(100vh - 48px - 4rem);">
+      <TabPane
+        label="体检总结"
+        style="overflow: scroll;position:relative;height:calc(100vh - 48px - 4rem);"
+      >
         <div class="reportcell">
           <Cell title="基本信息" style="background:rgb(248,142,105);color:white;"/>
           <div style="width:100%;padding:0.5rem;">
@@ -41,7 +47,12 @@
           </div>
         </div>
       </TabPane>
-      <TabPane label="报告详情" style="overflow: scroll;position:relative;" class="reportpane" id="detailpane">
+      <TabPane
+        label="报告详情"
+        style="overflow: scroll;position:relative;"
+        class="reportpane"
+        id="detailpane"
+      >
         <div style="position:absolute;width:100%;">
           <div v-for="item in reportInfo" :key="item.BMBH00">
             <div class="depcell" :id="item.BMBH00">
@@ -85,7 +96,9 @@
                   <div slot>{{item2.JCXMMC}}</div>
                   <div slot="extra">
                     <div style="text-align:right;">{{item2.JYJG00}}</div>
-                    {{item2.CKFW00 !== undefined ? '正常值('+item2.CKFW00 +')' : ''}}
+                    <span
+                      style="color:green;"
+                    >{{item2.CKFW00 !== undefined ? '正常值：('+item2.CKFW00 +')' : ''}}</span>
                   </div>
                 </Cell>
               </div>
@@ -137,7 +150,9 @@ export default {
   methods: {
     singleinfo(value) {
       console.log(value);
-      document.getElementById('detailpane').scrollTop = document.getElementById(value).offsetTop;
+      document.getElementById('detailpane').scrollTop = document.getElementById(
+        value,
+      ).offsetTop;
     },
   },
 };

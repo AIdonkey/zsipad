@@ -60,7 +60,9 @@ export default {
     allprice: {
       get() {
         let tempprice = 0;
+        // eslint-disable-next-line no-plusplus
         for (let i = 0; i < this.data1.length; i++) {
+          // eslint-disable-next-line radix
           tempprice += parseInt(this.data1[i].DJ0000);
         }
         return tempprice;

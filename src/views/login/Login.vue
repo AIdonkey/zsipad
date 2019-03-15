@@ -48,12 +48,13 @@ export default {
       showflag: false,
     };
   },
-  beforeCreate() {
+  created() {
     const loginindex = document.cookie.indexOf('dlyzxx=');
-    console.log(loginindex);
     if (loginindex !== -1) {
       const loginflag = document.cookie.slice(loginindex + 7, loginindex + 37);
+      const a = new Date();
       checkLogin(JSON.stringify({ dlyzxx: loginflag })).then(data => data.json()).then((res) => {
+        console.log(new Date() - a);
         this.$router.push('/home/personinfo');
       });
     } else {

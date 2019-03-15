@@ -88,7 +88,7 @@ export default {
     gettjzxx(
       `yyid00=${this.hospital}&zjbh00=${
         this.personinfo.zjbh00
-      }&xm0000=${encodeURI(encodeURI(this.personinfo.xm0000))}&choose=20`,
+      }&xm0000=${encodeURI(encodeURI(this.personinfo.xm0000))}&choose=20`, // choose获取信息
     )
       .then(response => response.json())
       .then((res) => {
