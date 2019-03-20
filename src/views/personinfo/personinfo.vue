@@ -15,22 +15,22 @@
                 <span class="fontstyle justifyfont" >
                     姓 名
                 </span>
-                <Input size="large" style="width: 208px;margin-right: 5rem" v-model="idname"/>
+                <Input size="large" style="width: 197px;margin-right: 5rem" v-model="idname"/>
                 <span class="fontstyle">
                      <span class="star">*</span>
                     年 龄(岁)
                 </span>
-                <Input size="large" style="width: 208px;" v-model="age"/>
+                <Input size="large" style="width: 197px;" v-model="age"/>
             </div>
             <div class="rowstyle">
                 <span class="fontstyle justifyfont">
                     性 别
                 </span>
-                <Select v-model="model1" style="width:208px;margin-right: 5rem" size="large" >
+                <Select v-model="model1" style="width:197px;margin-right: 5rem" size="large" >
                 <Option v-for="item in sex" :value="item" :key="item">{{ item }}</Option>
                 </Select>
                 <span class="fontstyle"> 婚 姻 状 况</span>
-                <Select v-model="model2" style="width:208px" size="large">
+                <Select v-model="model2" style="width:197px" size="large">
                     <Option v-for="item in marriage" :value="item" :key="item">{{ item }}</Option>
                 </Select>
             </div>
@@ -38,42 +38,42 @@
                 <span class="fontstyle justifyfont">
                     民 族
                 </span>
-                <Select v-model="model3" style="width:208px;margin-right: 5rem" size="large" >
+                <Select v-model="model3" style="width:197px;margin-right: 5rem" size="large" >
                     <Option v-for="item in nation" :value="item" :key="item">{{ item }}</Option>
                 </Select>
                 <span class="fontstyle">
                     <span class="star">*</span>
                     联系电话
                 </span>
-                <Input size="large" style="width: 208px;" v-model="mobilephone"/>
+                <Input size="large" style="width: 197px;" v-model="mobilephone"/>
             </div>
             <div class="rowstyle">
                 <span class="fontstyle">文 化 程 度</span>
-                <Select v-model="modal4" style="width:208px;margin-right: 5rem" size="large" >
+                <Select v-model="modal4" style="width:197px;margin-right: 5rem" size="large" >
                     <Option v-for="item in education" :value="item" :key="item">{{ item }}</Option>
                 </Select>
                 <span class="fontstyle">职 业 类 型</span>
-                <Select v-model="modal5" style="width:208px" size="large">
+                <Select v-model="modal5" style="width:197px" size="large">
                     <Option v-for="item in job" :value="item" :key="item">{{ item }}</Option>
                 </Select>
             </div>
             <div class="rowstyle" style="position: relative">
                 <span class="fontstyle">身 高 (c m)</span>
-                <Input size="large" style="width: 200px;margin-right: 5rem" v-model="Height">
+                <Input size="large" style="width: 197px;margin-right: 5.3rem" v-model="Height">
                 <span slot="prepend"><Icon type="md-add" @click.native="Height+= 1"/></span>
                 <span slot="append"><Icon type="md-remove" @click.native="Height > 0 ? Height -=1 : Height =0 "/></span>
                 </Input>
                 <span class="fontstyle">体 重 (k g)</span>
-                <Input size="large" style="width: 200px;" v-model="Weight">
+                <Input size="large" style="width: 197px;" v-model="Weight">
                 <span slot="prepend"><Icon type="md-add" @click.native="Weight+= 1"/></span>
                 <span slot="append"><Icon type="md-remove" @click.native="Weight > 0 ? Weight -=1 : Weight =0 "/></span>
                 </Input>
             </div>
             <div class="rowstyle">
                 <span class="fontstyle">BMI 计 算</span>
-                <Input size="large" style="width: 208px;margin-right: 5rem" v-model="BMI"/>
+                <Input size="large" style="width: 197px;margin-right: 5rem" v-model="BMI"/>
                 <span class="fontstyle">身 份 证 号</span>
-                <Input size="large" style="width: 208px;" v-model="idnum"/>
+                <Input size="large" style="width: 197px;" v-model="idnum"/>
                 <!-- <input type="file" accept="image/*" capture="camera"> -->
             </div>
         </section>

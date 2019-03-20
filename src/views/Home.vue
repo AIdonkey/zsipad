@@ -21,15 +21,15 @@
             <!-- <MenuItem name="1-5" @click.native="$router.push('/home/pay')">
               <Icon type="md-compass" />体检缴费
             </MenuItem> -->
-            <MenuItem name="1-6" @click.native="$router.push('/report')">
+            <MenuItem name="1-6" @click.native="$router.push('/reportdetail')">
               <Icon type="ios-navigate" />个人报告
             </MenuItem>
             <MenuItem name="orderdetail" @click.native="$router.push('/orderdetail')">
               <Icon type="md-ionitron" />个人订单
             </MenuItem>
-            <MenuItem name="reservationchart" @click.native="$router.push('/reservationchart')">
+            <!-- <MenuItem name="reservationchart" @click.native="$router.push('/reservationchart')">
               <Icon type="ios-navigate" />预约信息汇总
-            </MenuItem>
+            </MenuItem> -->
             <!--<Submenu name="2">-->
               <!--<template slot="title">-->
                 <!--<Icon type="ios-keypad" @click.native="$router.push('/home/home2')"></Icon>-->

@@ -7,19 +7,19 @@
           </div>
           <div class="avatarleft">
             <p>
-                姓名: {{this.personinfo.XM0000}}
+                姓名: {{this.personinfo.xm0000}}
             </p>
             <p>
-                手机: {{this.personinfo.XM0000}}
+                手机: {{this.personinfo.dhhm00}}
             </p>
             <p>
-                身份证: {{this.personinfo.ZJBH00}}
+                身份证: {{this.personinfo.zjbh00}}
             </p>
           </div>
       </header>
       <section class="paysection">
         <p style="text-align:center;">您将支付医院名字体检中心368.00元请在<span style="color: red;">{{paytime}} </span>S内完成支付...</p>
-        <div>
+        <div style="margin-top:1rem;">
             <img src="../../assets/logo.png" alt="">
         </div>
         <p style="color:red;">请扫码支付（支持支付宝、微信），或您也可线下进行支付</p>

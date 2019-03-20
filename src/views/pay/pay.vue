@@ -9,7 +9,7 @@
             </div>
             <div style="text-align: center">
                 <h3 style="color: #3f51b5">本次需缴金额</h3>
-                <h3 style="color: #ff0000;">￥340</h3>
+                <h3 style="color: #ff0000;">￥{{$route.query.price}}</h3>
             </div>
         </header>
         <section>
@@ -39,7 +39,9 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+// import '../../../service/pay';
+
 export default {
   name: 'pay',
   data() {
@@ -53,7 +55,7 @@ export default {
     margin-top: 2rem;
 }
 .backbutton{
-    margin-top: 5rem;
+    margin-top: 3rem;
     text-align: center;
 }
 </style>

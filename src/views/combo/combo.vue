@@ -11,7 +11,7 @@
                 <Button class="buttonstyle" size="large" shape="circle" @click.native="showtype = !showtype">所有套餐</Button>
             </div>
         </header>
-        <section>
+        <section style="-webkit-overflow-scrolling:touch">
             <div class="" style="margin-left: 1rem;">
                 <!-- <div style="display:inline-block;width: 33%">
                     <div class="fontstyle1">地 址</div>
