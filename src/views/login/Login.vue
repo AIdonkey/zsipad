@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { login, checkLogin } from '../../service/service';
+import { login } from '../../service/service';
 
 export default {
   name: 'login',

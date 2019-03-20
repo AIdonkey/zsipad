@@ -40,11 +40,21 @@
 </template>
 
 <script lang="ts">
-// import '../../../service/pay';
+// import { Charge } from '../../service/payservice.ts';
 
 export default {
   name: 'pay',
   data() {
+
+  },
+  mounted() {
+    this.pay();
+  },
+  methods: {
+    pay() {
+      const chargeonline = new Charge('1234566').name;
+      console.log(chargeonline);
+    },
   },
 };
 </script>
