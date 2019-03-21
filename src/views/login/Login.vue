@@ -5,6 +5,9 @@
       <div>自动登录中...</div>
     </Spin>
     <div class="logincontainer">
+      <div>
+        <img src="../../assets/image/ic_denglu_yijiajiankang_logo.png" alt="" style="width: 14rem;height: 6rem;">
+      </div>
       <div class="logincell">
         <Input
           prefix="ios-contact"
@@ -49,6 +52,25 @@
       <!--</div>-->
       <!--</div>-->
     </div>
+    <footer>
+      <div class="bottomcontainer">
+        <div style="display:inline-block;">
+          <img
+            src="../../assets/image/ic_neirong_touxianglogo.png"
+            alt
+            style="width: 8rem;height: 8rem;"
+          >
+        </div>
+        <div
+          style="font-size: 2rem;
+    display: inline-block;
+    color: white;
+    height: 10rem;
+    vertical-align: middle;"
+        >预约医院标题体检预约系统</div>
+        <div style="display:inline-block;"></div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -76,24 +98,6 @@ export default {
     // } else {
     //   this.showflag = true;
     // }
-  },
-  mounted() {
-    // const imgdown = document.getElementsByClassName('ivu-icon-logo-chrome')[0];
-    // const logincontainter = document.getElementsByClassName('imghandle')[0];
-    // console.log(imgdown.style);
-    // imgdown.addEventListener('mousedown', () => {
-    //   logincontainter.addEventListener('mousemove', (event) => {
-    //     imgdown.style.marginLeft = `${event.offsetX + 5}px`;
-    //   });
-    // });
-    // logincontainter.addEventListener('mouseup', (event) => {
-    //   logincontainter.removeEventListener('mousemove', () => {
-    //     console.log('success');
-    //   }, false);
-    // });
-    // // imgdown.addEventListener('mouseup', function () {
-    // //   imgdown.removeEventListener('mousemove')
-    // // })
   },
   methods: {
     submit() {
@@ -178,7 +182,15 @@ input {
 .swiper {
   position: relative;
 }
-.loginbackimg{
+.loginbackimg {
   background-image: url("../../assets/image/ic_denglu_beijing.png");
+}
+.bottomcontainer {
+  width: 100%;
+  height: 8rem;
+  background-color: #3f51b5;
+  opacity: 0.3;
+  position: absolute;
+  bottom: 0;
 }
 </style>

@@ -84,6 +84,11 @@ export default new Router({
       component: () => import('../src/views/report/reportdetail.vue'),
     },
     {
+      path: '/index',
+      name: 'index',
+      component: () => import('../src/views/index.vue'),
+    },
+    {
       path: '/test',
       name: 'test',
       component: () => import('../src/views/zxtc/test.vue'),
