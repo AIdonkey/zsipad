@@ -13,15 +13,15 @@ interface Tradeparam {
     jflx00: string;
     yyid00: string;
 }
-class Charge implements Chargeparam{
+export class Charge implements Chargeparam{
     currentTime: number;
     yyid00: string;
     tjh000: string;
     zjbh00: string;
     amount: string;
     accountType: string;
-    constructor(yyid00: string, tjh000: string, zjbh00: string, amount: string, accountType: string) {
-
+    constructor(yyid00: string) {
+        this.yyid00 = yyid00
     }
     createPay(params: Chargeparam) {
         let body = JSON.stringify(params);
@@ -44,9 +44,6 @@ class Charge implements Chargeparam{
         })
     }
 }
-function createPay(config:string): string {
+export function createPay(config:string): string {
     return '123';
-}
-function tradeQuery(:type) {
-    
 }

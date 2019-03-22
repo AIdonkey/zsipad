@@ -25,6 +25,8 @@
     "three-gltf-loader": "^1.100.0",
     "three-orbit-controls": "^82.1.0",
     "three.js": "^0.77.1",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.4000",
     "vue": "^2.5.17",
     "vue-moment": "^4.0.0",
     "vue-router": "^3.0.1",

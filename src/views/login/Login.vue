@@ -104,7 +104,7 @@ export default {
       login(JSON.stringify({ userName: 'admin', passWord: 'admin' }))
         .then(data => data.json())
         .then((res) => {
-          this.$router.push('/home/personinfo');
+          this.$router.push('/index');
           const expiretime = new Date();
           expiretime.setDate(expiretime.getDate() + 7);
           document.cookie = `dlyzxx=${

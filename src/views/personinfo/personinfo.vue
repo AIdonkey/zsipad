@@ -26,11 +26,11 @@
                 <span class="fontstyle justifyfont">
                     性 别
                 </span>
-                <Select v-model="model1" style="width:197px;margin-right: 5rem" size="large" >
+                <Select v-model="sex[model1-1]" style="width:197px;margin-right: 5rem" size="large" >
                 <Option v-for="item in sex" :value="item" :key="item">{{ item }}</Option>
                 </Select>
                 <span class="fontstyle"> 婚 姻 状 况</span>
-                <Select v-model="model2" style="width:197px" size="large">
+                <Select v-model="marriage[model2-1]" style="width:197px" size="large">
                     <Option v-for="item in marriage" :value="item" :key="item">{{ item }}</Option>
                 </Select>
             </div>
@@ -38,7 +38,7 @@
                 <span class="fontstyle justifyfont">
                     民 族
                 </span>
-                <Select v-model="model3" style="width:197px;margin-right: 5rem" size="large" >
+                <Select v-model="nation[model3-1]" style="width:197px;margin-right: 5rem" size="large" >
                     <Option v-for="item in nation" :value="item" :key="item">{{ item }}</Option>
                 </Select>
                 <span class="fontstyle">
@@ -91,81 +91,94 @@ export default {
   name: 'personinfo',
   data() {
     return {
-      model1: '',
-      model2: '',
-      model3: '',
-      modal4: 0,
-      modal5: '',
-      Height: 0,
-      age: '',
-      mobilephone: '',
+      model1: this.$store.state.personinfo.xb0000, // 性别
+      model2: this.$store.state.personinfo.hyzk00, // 婚姻状况
+      model3: this.$store.state.personinfo.mz0000, // 民族
+      modal4: this.$store.state.personinfo.whcd00, // 文化程度
+      modal5: this.$store.state.personinfo.zylb00, // 职业类型
+      Height: this.$store.state.personinfo.sg0000,
+      age: this.$store.state.personinfo.nl0000,
+      mobilephone: this.$store.state.personinfo.dhhm00,
       camerastring: '',
-      Weight: 0,
-      idnum: '',
-      idname: '',
+      Weight: this.$store.state.personinfo.tz0000,
+      idnum: this.$store.state.personinfo.zjbh00,
+      idname: this.$store.state.personinfo.xm0000,
       sex: ['男', '女'],
       marriage: ['已婚', '未婚', '未知'],
       nation: [
         '汉族',
-        '壮族',
-        '满族',
-        '回族',
-        '苗族',
-        '维吾尔族',
-        '土家族',
-        '彝族',
         '蒙古族',
+        '回族',
         '藏族',
+        '维吾尔族',
+        '苗族',
+        '彝族',
+        '壮族',
         '布依族',
+        '朝鲜族',
+        '满族',
         '侗族',
         '瑶族',
-        '朝鲜族',
         '白族',
+        '土家族',
         '哈尼族',
         '哈萨克族',
-        '黎族',
         '傣族',
-        '畲族',
+        '黎族',
         '傈僳族',
-        '仡佬族',
-        '东乡族',
+        '佤族',
+        '畲族',
         '高山族',
         '拉祜族',
         '水族',
-        '佤族',
+        '东乡族',
         '纳西族',
-        '羌族',
-        '土族',
-        '仫佬族',
-        '锡伯族',
-        '柯尔克孜族',
-        '达斡尔族',
         '景颇族',
-        '毛南族',
-        '撒拉族',
+        '柯尔克孜族',
+        '土族',
+        '达翰尔族',
+        '仫佬族',
+        '羌族',
         '布朗族',
-        '塔吉克族',
+        '撒拉族',
+        '毛南族',
+        '仡佬族',
+        '锡伯族',
         '阿昌族',
         '普米族',
-        '鄂温克族',
+        '塔吉克族',
         '怒族',
-        '京族',
-        '基诺族',
+        '乌孜别克族',
+        '俄罗斯族',
+        '鄂温克族',
         '德昂族',
         '保安族',
-        '俄罗斯族',
         '裕固族',
-        '乌孜别克族',
-        '门巴族',
-        '鄂伦春族',
-        '独龙族',
+        '京族',
         '塔塔尔族',
+        '独龙族',
+        '鄂伦春族',
         '赫哲族',
+        '门巴族',
         '珞巴族',
+        '基诺族',
+        '其他',
+        '外国血统',
+        '穿青族',
       ],
       education: [
+        '文盲',
         '小学',
         '初中',
+        '高中',
+        '技校',
+        '中专',
+        '大专',
+        '本科',
+        '双本科',
+        '硕士',
+        '博士',
+        '博士后',
       ],
       job: [
         '工人',
@@ -183,16 +196,17 @@ export default {
     },
   },
   methods: {
+    ...mapState(['personinfo']),
     ...mapMutations(['PERSONINFO']),
     subpersoninfo() {
       const userinfo = {
         zjbh00: this.idnum,
         xm0000: this.idname,
-        xb0000: this.modal1 === '男' ? '1' : '2',
+        xb0000: this.model1 === '男' ? '1' : '2',
         dhhm00: this.mobilephone,
         nl0000: this.age,
-        hyzk00: this.modal2,
-        mz0000: this.modal3,
+        hyzk00: this.model2 === '已婚' ? '1' : '2',
+        mz0000: this.model3,
         whcd00: '',
         zylb00: '',
         csrq00: '',

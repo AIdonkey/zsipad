@@ -39,8 +39,8 @@
     </div>
 </template>
 
-<script lang="ts">
-// import { Charge } from '../../service/payservice.ts';
+<script lang='ts'>
+import { Charge } from '../../service/payservice';
 
 export default {
   name: 'pay',
@@ -48,12 +48,11 @@ export default {
 
   },
   mounted() {
-    this.pay();
+    this.pay1();
   },
   methods: {
-    pay() {
-      const chargeonline = new Charge('1234566').name;
-      console.log(chargeonline);
+    pay1() {
+      console.log(new Charge('123456').yyid00);
     },
   },
 };

@@ -1,5 +1,4 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
-
 // const productionGzipExtensions = ['js', 'css'];
 module.exports = {
   pluginOptions: {
@@ -41,6 +40,12 @@ module.exports = {
         })
         .end();
     });
+    config.module
+      .rule('ts')
+      .test(/\.ts$/)
+      .use('ts-loader')
+      .loader('ts-loader')
+      .options({ appendTsSuffixTo: [/\.vue$/] });
   },
   // configureWebpack: {
   //   plugins: [
