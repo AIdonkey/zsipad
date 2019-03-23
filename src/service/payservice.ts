@@ -43,6 +43,9 @@ export class Charge implements Chargeparam{
             console.log(response);
         })
     }
+    qrcode(params: string) {
+        
+    }
 }
 export function createPay(config:string): string {
     return '123';
