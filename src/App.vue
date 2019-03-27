@@ -6,6 +6,9 @@
 
       </div>
     </transition>
+    <div class="loading-component">
+
+    </div>
     <router-view></router-view>
   </div>
 </template>
