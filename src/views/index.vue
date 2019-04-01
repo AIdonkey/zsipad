@@ -5,13 +5,13 @@
         预约医院标题体检预约系统
       </div>
       <div class="dep">
-        <img src="../assets/image/ic_taocanchaxun.png" alt class="depimg" @click="combo">
+        <img src="../assets/image/ic_taocanchaxun.png" alt class="depimg" @click="choosetype('1')">
       </div>
       <div class="dep">
-        <img src="../assets/image/ic_tijianshenqing.png" alt class="depimg" @click="questionnaire">
+        <img src="../assets/image/ic_tijianshenqing.png" alt class="depimg" @click="choosetype('2')">
       </div>
       <div class="dep">
-        <img src="../assets/image/ic_tijianjiaofei.png" alt class="depimg" @click="order">
+        <img src="../assets/image/ic_tijianjiaofei.png" alt class="depimg" @click="choosetype('3')">
       </div>
     </div>
     <footer>
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     ...mapMutations(['PERSONINFO']),
-    combo() {
+    choosetype(chooseflag) { // 选择类型
       const that = this;
       this.$Modal.confirm({
         render: h => h('div', {
@@ -78,9 +78,11 @@ export default {
               value: this.idnum,
               autofocus: true,
               placeholder: '身份证号码',
-              styles: {
-                marginTop: '10px',
-              },
+              // class: {
+              // },
+            },
+            style: {
+              marginTop: '10px',
             },
             on: {
               input: (val) => {
@@ -93,32 +95,42 @@ export default {
           getyhxx1(`zjbh00=${that.idnum}`).then(res => res.json()).then((response) => {
             // personalFile: "[{"DH0000":"3333333","XB0000":"2","XM0000":"黄健君"}]"
             // userInfo: "[{"NL0000":"23","MZ0000":"1","SG0000":170,"TZ0000":70,"ZYLB00":"0","WHCD00":"0","DHHM00":"18016662312","HYZK00":"1"}]"
-            const userinfo1 = JSON.parse(response.responseEntity.entity.personalFile)[0];
-            const userinfo2 = JSON.parse(response.responseEntity.entity.userInfo)[0];
-            const userinfo = {
-              zjbh00: that.idnum,
-              xm0000: userinfo1.XM0000,
-              xb0000: userinfo1.XB0000 === '1' ? '男' : '女' || '',
-              dhhm00: userinfo2.DHHM00 || '',
-              nl0000: userinfo2.NL0000 || '',
-              hyzk00: userinfo2.HYZK00 === '0' ? '未婚' : '已婚' || '',
-              mz0000: userinfo2.MZ0000 || '',
-              whcd00: '',
-              zylb00: '',
-              csrq00: '',
-              dz0000: '',
-              yxrqks: '',
-              yxrqjs: '',
-              fzjg00: '',
-              tz0000: userinfo2.TZ0000 || '',
-              sg0000: userinfo2.SG0000 || '',
-              bmi000: '',
-              zp0000: '',
-              dept00: '',
-              career: '',
-            };
-            that.PERSONINFO(userinfo);
-            that.$router.push('Home/personinfo');
+            if (response.responseEntity.entity.personalFile === undefined) {
+              that.$router.push('Home/personinfo');
+            } else {
+              const userinfo1 = JSON.parse(response.responseEntity.entity.personalFile)[0];
+              const userinfo2 = JSON.parse(response.responseEntity.entity.userInfo)[0];
+              const userinfo = {
+                zjbh00: that.idnum,
+                xm0000: userinfo1.XM0000,
+                xb0000: userinfo1.XB0000 === '1' ? '男' : '女' || '',
+                dhhm00: userinfo2.DHHM00 || '',
+                nl0000: userinfo2.NL0000 || '',
+                hyzk00: userinfo2.HYZK00 === '0' ? '未婚' : '已婚' || '',
+                mz0000: userinfo2.MZ0000 || '',
+                whcd00: '',
+                zylb00: '',
+                csrq00: '',
+                dz0000: '',
+                yxrqks: '',
+                yxrqjs: '',
+                fzjg00: '',
+                tz0000: userinfo2.TZ0000 || '',
+                sg0000: userinfo2.SG0000 || '',
+                bmi000: '',
+                zp0000: '',
+                dept00: '',
+                career: '',
+              };
+              that.PERSONINFO(userinfo);
+              if (chooseflag === '1') {
+                that.$router.push('Home/personinfo');
+              } else if (chooseflag === '2') {
+                that.$router.push('Home/questionnaire');
+              } else if (chooseflag === '3') {
+                that.$router.push('orderdetail');
+              }
+            }
           });
         },
       });
