@@ -20,7 +20,7 @@
       <section class="paysection">
         <p style="text-align:center;">您将支付医院名字体检中心368.00元请在<span style="color: red;">{{paytime}} </span>S内完成支付...</p>
         <div style="margin-top:1rem;">
-            <img src="../../assets/logo.png" alt="">
+            <qrcode value="Hello, World!" :options="{ width: 200 }"></qrcode>
         </div>
         <p style="color:red;">请扫码支付（支持支付宝、微信），或您也可线下进行支付</p>
         <Button style="margin-top:2vw;" shape="circle" class="bigbutton">线下支付</Button>

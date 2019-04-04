@@ -175,7 +175,7 @@ export default {
         this.data1.push(this.newprj[i]);
       }
       this.newprj = [];
-      this.data1change++; // 数据是否改变
+      this.data1change += 1; // 数据是否改变
     },
   },
   watch: {
@@ -184,7 +184,7 @@ export default {
     },
     data1change() {
       const temparr = [];
-      for (let i = 0; i < this.data1.length; i++) {
+      for (let i = 0; i < this.data1.length; i += 1) {
         temparr.push(this.data1[i].SQXMID);
       }
       this.ids = temparr.join();

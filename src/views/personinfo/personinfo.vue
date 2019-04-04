@@ -1,86 +1,89 @@
 <template>
-    <div style="padding: 24px">
-        <header>
-            <div class="headerbutton">
-                <div style="display: inline-block" >
-                    <h2>请完善您的基本信息</h2><h5>PELEASE IMPROVE YOUR BASIC INFORMATION</h5>
-                </div>
-            </div>
-            <div style="background: #f8f8f8;padding: 1rem">
-                <span style="color: red;font-size: 1rem">*为必填项</span>
-            </div>
-        </header>
-        <section>
-            <div class="rowstyle">
-                <span class="fontstyle justifyfont" >
-                    姓 名
-                </span>
-                <Input size="large" style="width: 197px;margin-right: 5rem" v-model="idname"/>
-                <span class="fontstyle">
-                     <span class="star">*</span>
-                    年 龄(岁)
-                </span>
-                <Input size="large" style="width: 197px;" v-model="age"/>
-            </div>
-            <div class="rowstyle">
-                <span class="fontstyle justifyfont">
-                    性 别
-                </span>
-                <Select v-model="sex[model1-1]" style="width:197px;margin-right: 5rem" size="large" >
-                <Option v-for="item in sex" :value="item" :key="item">{{ item }}</Option>
-                </Select>
-                <span class="fontstyle"> 婚 姻 状 况</span>
-                <Select v-model="marriage[model2-1]" style="width:197px" size="large">
-                    <Option v-for="item in marriage" :value="item" :key="item">{{ item }}</Option>
-                </Select>
-            </div>
-            <div class="rowstyle">
-                <span class="fontstyle justifyfont">
-                    民 族
-                </span>
-                <Select v-model="nation[model3-1]" style="width:197px;margin-right: 5rem" size="large" >
-                    <Option v-for="item in nation" :value="item" :key="item">{{ item }}</Option>
-                </Select>
-                <span class="fontstyle">
-                    <span class="star">*</span>
-                    联系电话
-                </span>
-                <Input size="large" style="width: 197px;" v-model="mobilephone"/>
-            </div>
-            <div class="rowstyle">
-                <span class="fontstyle">文 化 程 度</span>
-                <Select v-model="modal4" style="width:197px;margin-right: 5rem" size="large" >
-                    <Option v-for="item in education" :value="item" :key="item">{{ item }}</Option>
-                </Select>
-                <span class="fontstyle">职 业 类 型</span>
-                <Select v-model="modal5" style="width:197px" size="large">
-                    <Option v-for="item in job" :value="item" :key="item">{{ item }}</Option>
-                </Select>
-            </div>
-            <div class="rowstyle" style="position: relative">
-                <span class="fontstyle">身 高 (c m)</span>
-                <Input size="large" style="width: 197px;margin-right: 5.3rem" v-model="Height">
-                <span slot="prepend"><Icon type="md-add" @click.native="Height+= 1"/></span>
-                <span slot="append"><Icon type="md-remove" @click.native="Height > 0 ? Height -=1 : Height =0 "/></span>
-                </Input>
-                <span class="fontstyle">体 重 (k g)</span>
-                <Input size="large" style="width: 197px;" v-model="Weight">
-                <span slot="prepend"><Icon type="md-add" @click.native="Weight+= 1"/></span>
-                <span slot="append"><Icon type="md-remove" @click.native="Weight > 0 ? Weight -=1 : Weight =0 "/></span>
-                </Input>
-            </div>
-            <div class="rowstyle">
-                <span class="fontstyle">BMI 计 算</span>
-                <Input size="large" style="width: 197px;margin-right: 5rem" v-model="BMI"/>
-                <span class="fontstyle">身 份 证 号</span>
-                <Input size="large" style="width: 197px;" v-model="idnum"/>
-                <!-- <input type="file" accept="image/*" capture="camera"> -->
-            </div>
-        </section>
-        <footer style="margin-top: 5rem;text-align: center">
-            <Button type="primary" size="large" @click.native="subpersoninfo">确认信息</Button>
-        </footer>
-    </div>
+  <div style="padding: 24px">
+    <header>
+      <div class="headerbutton">
+        <div style="display: inline-block">
+          <h2>请完善您的基本信息</h2>
+          <h5>PELEASE IMPROVE YOUR BASIC INFORMATION</h5>
+        </div>
+      </div>
+      <div style="background: #f8f8f8;padding: 1rem">
+        <span style="color: red;font-size: 1rem">*为必填项</span>
+      </div>
+    </header>
+    <section>
+      <div class="rowstyle">
+        <span class="fontstyle justifyfont">姓 名</span>
+        <Input size="large" style="width: 197px;margin-right: 5rem" v-model="idname"/>
+        <span class="fontstyle">
+          <span class="star">*</span>
+          年 龄(岁)
+        </span>
+        <Input size="large" style="width: 197px;" v-model="age"/>
+      </div>
+      <div class="rowstyle">
+        <span class="fontstyle justifyfont">性 别</span>
+        <Select v-model="sex[model1-1]" style="width:197px;margin-right: 5rem" size="large">
+          <Option v-for="item in sex" :value="item" :key="item">{{ item }}</Option>
+        </Select>
+        <span class="fontstyle">婚 姻 状 况</span>
+        <Select v-model="marriage[model2-1]" style="width:197px" size="large">
+          <Option v-for="item in marriage" :value="item" :key="item">{{ item }}</Option>
+        </Select>
+      </div>
+      <div class="rowstyle">
+        <span class="fontstyle justifyfont">民 族</span>
+        <Select v-model="nation[model3-1]" style="width:197px;margin-right: 5rem" size="large">
+          <Option v-for="item in nation" :value="item" :key="item">{{ item }}</Option>
+        </Select>
+        <span class="fontstyle">
+          <span class="star">*</span>
+          联系电话
+        </span>
+        <Input size="large" style="width: 197px;" v-model="mobilephone"/>
+      </div>
+      <div class="rowstyle">
+        <span class="fontstyle">文 化 程 度</span>
+        <Select v-model="modal4" style="width:197px;margin-right: 5rem" size="large">
+          <Option v-for="item in education" :value="item" :key="item">{{ item }}</Option>
+        </Select>
+        <span class="fontstyle">职 业 类 型</span>
+        <Select v-model="modal5" style="width:197px" size="large">
+          <Option v-for="item in job" :value="item" :key="item">{{ item }}</Option>
+        </Select>
+      </div>
+      <div class="rowstyle" style="position: relative">
+        <span class="fontstyle">身 高 (c m)</span>
+        <Input size="large" style="width: 197px;margin-right: 5.3rem" v-model="Height">
+          <span slot="prepend">
+            <Icon type="md-add" @click.native="Height+= 1"/>
+          </span>
+          <span slot="append">
+            <Icon type="md-remove" @click.native="Height > 0 ? Height -=1 : Height =0 "/>
+          </span>
+        </Input>
+        <span class="fontstyle">体 重 (k g)</span>
+        <Input size="large" style="width: 197px;" v-model="Weight">
+          <span slot="prepend">
+            <Icon type="md-add" @click.native="Weight+= 1"/>
+          </span>
+          <span slot="append">
+            <Icon type="md-remove" @click.native="Weight > 0 ? Weight -=1 : Weight =0 "/>
+          </span>
+        </Input>
+      </div>
+      <div class="rowstyle">
+        <span class="fontstyle">BMI 计 算</span>
+        <Input size="large" style="width: 197px;margin-right: 5rem" v-model="BMI"/>
+        <span class="fontstyle">身 份 证 号</span>
+        <Input size="large" style="width: 197px;" v-model="idnum"/>
+        <!-- <input type="file" accept="image/*" capture="camera"> -->
+      </div>
+    </section>
+    <footer style="margin-top: 5rem;text-align: center">
+      <Button type="primary" size="large" @click.native="subpersoninfo">确认信息</Button>
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -181,8 +184,20 @@ export default {
         '博士后',
       ],
       job: [
+        '干部',
         '工人',
-        '教师',
+        '农民',
+        '学生',
+        '儿童',
+        '家属',
+        '居民',
+        '归国华侨',
+        '企业主',
+        '高管',
+        '职员',
+        '自由职业',
+        '体力工作者',
+        '其他劳动者',
       ],
     };
   },
@@ -235,49 +250,49 @@ export default {
 </script>
 
 <style scoped>
-.rowstyle1{
-    margin-top: 3vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+.rowstyle1 {
+  margin-top: 3vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
-.justifyfont{
-    height: 1.5rem;
+.justifyfont {
+  height: 1.5rem;
 }
-.justifyfont1{
-    height: 3rem;
+.justifyfont1 {
+  height: 3rem;
 }
-.star{
-    color: red;
+.star {
+  color: red;
 }
 @media screen and (max-width: 768px) {
-    .star{
-        margin-left: -1rem;
-    }
+  .star {
+    margin-left: -1rem;
+  }
 }
-.justifyfont::after{
-     content: '';
-     height: 1px;
-     width: 100%;
-     display: inline-block;
+.justifyfont::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  display: inline-block;
 }
-.justifyfont1::after{
-     content: '';
-     height: 1px;
-     width: 100%;
-     display: inline-block;
+.justifyfont1::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  display: inline-block;
 }
-.fontstyle{
-    width: 5rem;
-    text-align: justify;
-    margin-right: 0.5rem;
-    height: 24px;
+.fontstyle {
+  width: 5rem;
+  text-align: justify;
+  margin-right: 0.5rem;
+  height: 24px;
 }
-.fontstyle::after{
-    content: '';
-    width: 100%;
-    height: 0.1px;
-    display: inline-block;
+.fontstyle::after {
+  content: "";
+  width: 100%;
+  height: 0.1px;
+  display: inline-block;
 }
 </style>

@@ -52,7 +52,9 @@ export default {
   },
   methods: {
     pay1() {
-      console.log(new Charge('123456').yyid00);
+    //   const fetchAndCacheResponse = this.requestWrapper.fetchAndCache({
+    //       request: even
+    //   });
     },
   },
 };
