@@ -67,7 +67,7 @@
     color: white;
     height: 10rem;
     vertical-align: middle;"
-        >预约医院标题体检预约系统</div>
+        >厦门心血管病医院体检预约系统</div>
         <div style="display:inline-block;"></div>
       </div>
     </footer>
